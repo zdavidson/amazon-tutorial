@@ -6,6 +6,7 @@ import { Box, Button, Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import CustomButton from "./shared/CustomButton";
 
 interface Props {
   product: Product[];
@@ -46,20 +47,14 @@ const ProductDetails = ({ product }: Props) => {
               <Typography variant="h2" sx={{ fontWeight: 700 }}>
                 ${prod.price}
               </Typography>
-              <Button
+              <CustomButton
                 onClick={() => {
                   dispatch(addToCart(prod));
                   router.push("/cart");
                 }}
-                sx={{
-                  backgroundColor: COLORS.yellow,
-                  borderRadius: "2rem",
-                  color: COLORS.black,
-                  width: 200,
-                }}
               >
                 Add to Cart
-              </Button>
+              </CustomButton>
             </Box>
           </Box>
         );
