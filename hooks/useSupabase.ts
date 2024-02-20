@@ -20,7 +20,9 @@ export const useSupabase = () => {
     const { data, error } = await supabase
       .from("products")
       .select()
-      .ilike("title", `%${filter}%`);
+      .or(
+        `title.ilike.%${filter}%, description.ilike.%${filter}%, category.ilike.%${filter}%`
+      );
 
     if (data) {
       setFilteredProducts(data);
