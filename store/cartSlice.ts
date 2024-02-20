@@ -22,10 +22,13 @@ export const cartSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    removeItem: (state, action) => {
+      state.cart.splice(action.payload, 1);
+    },
   },
 });
 
-export const { addToCart, clearCart } = cartSlice.actions;
+export const { addToCart, clearCart, removeItem } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.cart;
 
