@@ -9,4 +9,6 @@ export const COLORS = {
   paleOrange: "#f5bd6a",
   paleOrangeHover: "#f3a946",
   darkGray: "#333333",
+  teal: "#377d90",
+  whiteSmoke: "#f5f5f5",
 };

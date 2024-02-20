@@ -1,6 +1,9 @@
 "use client";
 
+import SearchResults from "@/components/SearchResults";
+import ProductCard from "@/components/shared/ProductCard";
 import { useSupabase } from "@/hooks/useSupabase";
+import { Box, Container } from "@mui/material";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -12,11 +15,9 @@ const QueryPage = () => {
     getFilteredProducts(query.toString());
   }, [getFilteredProducts, query]);
   return (
-    <div>
-      {filteredProducts.map((product) => {
-        return <p key={product.id}>{product.title}</p>;
-      })}
-    </div>
+    <Container>
+      <SearchResults products={filteredProducts} />
+    </Container>
   );
 };
 
