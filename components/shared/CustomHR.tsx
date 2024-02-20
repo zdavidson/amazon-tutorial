@@ -1,9 +1,9 @@
 import { COLORS } from "@/styles/colors";
-import { HorizontalRule } from "@mui/icons-material";
+import { Divider } from "@mui/material";
 import React from "react";
 
 const CustomHR = () => {
-  return <HorizontalRule sx={{ color: COLORS.lightGray }} />;
+  return <Divider sx={{ color: COLORS.lightGray, width: "100%" }} />;
 };
 
 export default CustomHR;

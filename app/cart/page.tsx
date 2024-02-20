@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 
 const CartPage = () => {
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Cart />
     </Container>
   );

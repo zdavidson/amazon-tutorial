@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import CustomButton from "./shared/CustomButton";
 import CustomHR from "./shared/CustomHR";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { getRandomNumber } from "@/utils";
 
 interface Props {
   product: Product[];
@@ -22,8 +23,6 @@ const ProductDetails = ({ product }: Props) => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(1);
   const [inStock, setInStock] = useState(2);
-
-  const getRandomNumber = (max: number) => Math.floor(Math.random() * max);
 
   useEffect(() => {
     setHours(getRandomNumber(12));
