@@ -1,7 +1,13 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const Cart = () => {
-  return <div>Cart</div>;
+  return (
+    <Box>
+      <Typography variant="h1">Shopping Cart</Typography>
+      <hr></hr>
+    </Box>
+  );
 };
 
 export default Cart;

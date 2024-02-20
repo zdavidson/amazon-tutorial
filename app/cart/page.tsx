@@ -1,7 +1,13 @@
 import React from "react";
+import Cart from "@/components/shared/Cart";
+import { Container } from "@mui/material";
 
-const Cart = () => {
-  return <div>Cart</div>;
+const CartPage = () => {
+  return (
+    <Container>
+      <Cart />
+    </Container>
+  );
 };
 
-export default Cart;
+export default CartPage;

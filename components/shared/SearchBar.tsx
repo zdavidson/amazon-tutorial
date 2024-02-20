@@ -5,17 +5,14 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import React, { FormEvent, useState } from "react";
 import { COLORS } from "@/styles/colors";
-import { useSupabase } from "@/hooks/useSupabase";
 import { useRouter } from "next/navigation";
 
 const SearchBar = () => {
   const [query, setQuery] = useState<string>("");
-  const { getFilteredProducts } = useSupabase();
   const router = useRouter();
 
   const searchProducts = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    getFilteredProducts(query);
     router.push(`/search/${query}/`);
   };
 

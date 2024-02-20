@@ -5,7 +5,7 @@ import React from "react";
 
 const Orders = () => {
   const { filteredProducts, getFilteredProducts } = useSupabase();
-  console.log(filteredProducts);
+
   return (
     <div>
       {" "}

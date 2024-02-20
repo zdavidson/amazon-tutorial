@@ -1,9 +1,12 @@
 import { supabase } from "@/lib/supabase/products";
 import { useState } from "react";
 
+import { Product } from "@/types/supabase";
+
 export const useSupabase = () => {
-  const [products, setProducts] = useState<any[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [singleProduct, setSingleProduct] = useState<Product[]>([]);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -24,5 +27,23 @@ export const useSupabase = () => {
     }
   };
 
-  return { products, getProducts, filteredProducts, getFilteredProducts };
+  const getSingleProduct = async (filter: number) => {
+    const { data, error } = await supabase
+      .from("products")
+      .select()
+      .eq("id", `${filter}`);
+
+    if (data) {
+      setSingleProduct(data);
+    }
+  };
+
+  return {
+    products,
+    getProducts,
+    filteredProducts,
+    getFilteredProducts,
+    singleProduct,
+    getSingleProduct,
+  };
 };
