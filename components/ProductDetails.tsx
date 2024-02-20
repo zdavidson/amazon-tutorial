@@ -1,3 +1,5 @@
+import { useAppDispatch } from "@/hooks/redux";
+import { addToCart } from "@/store/cartSlice";
 import { COLORS } from "@/styles/colors";
 import { Product } from "@/types/supabase";
 import { Box, Button, Rating, Typography } from "@mui/material";
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const ProductDetails = ({ product }: Props) => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   return (
@@ -44,7 +47,10 @@ const ProductDetails = ({ product }: Props) => {
                 ${prod.price}
               </Typography>
               <Button
-                onClick={() => router.push("/cart")}
+                onClick={() => {
+                  dispatch(addToCart(prod));
+                  router.push("/cart");
+                }}
                 sx={{
                   backgroundColor: COLORS.yellow,
                   borderRadius: "2rem",
