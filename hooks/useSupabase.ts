@@ -7,6 +7,10 @@ export const useSupabase = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [singleProduct, setSingleProduct] = useState<Product[]>([]);
+  const [clothing, setClothing] = useState<Product[]>([]);
+  const [electronics, setElectronics] = useState<Product[]>([]);
+  const [jewelry, setJewelry] = useState<Product[]>([]);
+  const [womensClothing, setWomensClothing] = useState<Product[]>([]);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("products").select("*");
@@ -40,6 +44,53 @@ export const useSupabase = () => {
     }
   };
 
+  const getClothing = async () => {
+    const filter = "clothing";
+    const { data, error } = await supabase
+      .from("products")
+      .select()
+      .or(
+        `title.ilike.%${filter}%, description.ilike.%${filter}%, category.ilike.%${filter}%`
+      );
+
+    if (data) {
+      setClothing(data);
+    }
+  };
+
+  const getJewelry = async () => {
+    const { data, error } = await supabase
+      .from("products")
+      .select()
+      .ilike("category", "jewelry");
+
+    if (data) {
+      setJewelry(data);
+    }
+  };
+
+  const getWomensClothing = async () => {
+    const { data, error } = await supabase
+      .from("products")
+      .select()
+      .ilike("category", "women's clothing");
+
+    if (data) {
+      setWomensClothing(data);
+    }
+  };
+
+  const getElectronics = async () => {
+    const { data, error } = await supabase
+      .from("products")
+      .select()
+      .ilike("category", "electronics");
+
+    if (data) {
+      setElectronics(data);
+    }
+  };
+
   return {
     products,
     getProducts,
@@ -47,5 +98,13 @@ export const useSupabase = () => {
     getFilteredProducts,
     singleProduct,
     getSingleProduct,
+    clothing,
+    getClothing,
+    electronics,
+    getElectronics,
+    jewelry,
+    getJewelry,
+    womensClothing,
+    getWomensClothing,
   };
 };
