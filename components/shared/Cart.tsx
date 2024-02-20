@@ -1,11 +1,13 @@
+import { COLORS } from "@/styles/colors";
+import { HorizontalRule } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const Cart = () => {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: COLORS.white }}>
       <Typography variant="h1">Shopping Cart</Typography>
-      <hr></hr>
+      <HorizontalRule sx={{ color: COLORS.lightGray }} />
     </Box>
   );
 };
