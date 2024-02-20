@@ -11,4 +11,7 @@ export const COLORS = {
   darkGray: "#333333",
   teal: "#377d90",
   whiteSmoke: "#f5f5f5",
+  paleGreen: "#a6cda8",
+  green: "#207600",
+  red: "#b12704",
 };
