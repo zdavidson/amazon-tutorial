@@ -1,11 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedCartReducer = persistReducer(persistConfig, cartSlice);
 
 export const store = configureStore({
   reducer: {
-    cart: cartSlice,
+    cart: persistedCartReducer,
   },
 });
+
+export const persistedStore = persistStore(store);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
