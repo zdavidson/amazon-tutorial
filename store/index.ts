@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import ordersSlice from "./ordersSlice";
 
 const persistConfig = {
   key: "root",
@@ -9,10 +10,12 @@ const persistConfig = {
 };
 
 const persistedCartReducer = persistReducer(persistConfig, cartSlice);
+const persistedOrdersReducer = persistReducer(persistConfig, ordersSlice);
 
 export const store = configureStore({
   reducer: {
     cart: persistedCartReducer,
+    orders: persistedOrdersReducer,
   },
 });
 

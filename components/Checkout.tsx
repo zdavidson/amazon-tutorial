@@ -6,13 +6,15 @@ import { COLORS } from "@/styles/colors";
 import CustomHR from "./shared/CustomHR";
 import LockIcon from "@mui/icons-material/Lock";
 import CustomButton from "./shared/CustomButton";
-import { useAppSelector } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { selectCart } from "@/store/cartSlice";
 import { Product } from "@/types/supabase";
 import CheckoutItem from "./CheckoutItem";
+import { addToOrders } from "@/store/ordersSlice";
 
 const Checkout = () => {
   const cart = useAppSelector(selectCart);
+  const dispatch = useAppDispatch();
 
   let totalCart = 0;
 
@@ -107,7 +109,7 @@ const Checkout = () => {
                 alignItems: "center",
               }}
             >
-              <CustomButton onClick={() => console.log("")}>
+              <CustomButton onClick={() => dispatch(addToOrders(cart))}>
                 Place Your Order
               </CustomButton>
               <Box
@@ -147,7 +149,7 @@ const Checkout = () => {
           >
             <Box sx={{ padding: "1rem" }}>
               <CustomButton
-                onClick={() => console.log("")}
+                onClick={() => dispatch(addToOrders(cart))}
                 sx={{ width: "100%" }}
               >
                 Place Your Order
