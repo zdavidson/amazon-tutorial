@@ -26,6 +26,7 @@ const Header = () => {
     "Fashion",
     "Luxury Stores",
   ];
+
   return (
     <Box
       sx={{
